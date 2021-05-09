@@ -1,0 +1,217 @@
+******************************************************************************
+                  TI ARM Linker PC v5.1.5                      
+******************************************************************************
+>> Linked Thu Dec 07 13:15:04 2017
+
+OUTPUT FILE NAME:   <lcd.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 00000a05
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00040000  00000bdc  0003f424  R  X
+  SRAM                  20000000   00008000  00000214  00007dec  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00000be0   00000be0    r-x
+  00000000    00000000    0000026c   0000026c    r-- .intvecs
+  0000026c    0000026c    00000950   00000950    r-x .text
+  00000bc0    00000bc0    00000020   00000020    r-- .cinit
+20000000    20000000    00000214   00000000    rw-
+  20000000    20000000    00000200   00000000    rw- .stack
+  20000200    20000200    00000014   00000000    rw- .data
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    0000026c     
+                  00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.text      0    0000026c    00000950     
+                  0000026c    000003e0     lcd.obj (.text)
+                  0000064c    00000132     driverlib.lib : gpio.obj (.text:GPIOPadConfigSet)
+                  0000077e    00000002     --HOLE-- [fill = 0]
+                  00000780    000000f4                   : sysctl.obj (.text:SysCtlClockSet)
+                  00000874    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.obj (.text)
+                  00000910    00000094                                   : auto_init.obj (.text)
+                  000009a4    0000005e                                   : copy_decompress_rle.obj (.text)
+                  00000a02    00000002     --HOLE-- [fill = 0]
+                  00000a04    00000048                                   : boot.obj (.text)
+                  00000a4c    00000044                                   : cpy_tbl.obj (.text)
+                  00000a90    00000044                                   : exit.obj (.text)
+                  00000ad4    00000034     driverlib.lib : sysctl.obj (.text:SysCtlPeripheralEnable)
+                  00000b08    0000002a                   : gpio.obj (.text:GPIODirModeSet)
+                  00000b32    00000018                   : gpio.obj (.text:GPIOPinTypeGPIOOutput)
+                  00000b4a    00000002     --HOLE-- [fill = 0]
+                  00000b4c    00000018     rtsv7M4_T_le_v4SPD16_eabi.lib : args_main.obj (.text)
+                  00000b64    00000014                                   : _lock.obj (.text)
+                  00000b78    00000012     driverlib.lib : gpio.obj (.text:GPIOPinTypeGPIOInput)
+                  00000b8a    0000000e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_none.obj (.text:decompress:none)
+                  00000b98    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  00000ba4    00000006     driverlib.lib : gpio.obj (.text:GPIOPinRead)
+                  00000baa    00000006                   : gpio.obj (.text:GPIOPinWrite)
+                  00000bb0    00000006                   : sysctl.obj (.text:SysCtlDelay)
+                  00000bb6    00000006     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_rle.obj (.text:decompress:rle24)
+
+.cinit     0    00000bc0    00000020     
+                  00000bc0    0000000f     (.cinit..data.load) [load image, compression = rle]
+                  00000bcf    00000001     --HOLE-- [fill = 0]
+                  00000bd0    00000008     (__TI_handler_table)
+                  00000bd8    00000008     (__TI_cinit_table)
+
+.stack     0    20000000    00000200     UNINITIALIZED
+                  20000000    00000200     --HOLE--
+
+.data      0    20000200    00000014     UNINITIALIZED
+                  20000200    00000008     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.data)
+                  20000208    00000008                                   : exit.obj (.data)
+                  20000210    00000004                                   : stkdepth_vars.obj (.data)
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00000bd8 records: 1, size/record: 8, table size: 8
+	.data: load addr=00000bc0, load size=0000000f bytes, run addr=20000200, run size=00000014 bytes, compression=rle
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00000bd0 records: 2, size/record: 4, table size: 8
+	index: 0, handler: __TI_decompress_rle24
+	index: 1, handler: __TI_decompress_none
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address    name
+--------   ----
+00000a91   C$$EXIT
+00000b09   GPIODirModeSet
+0000064d   GPIOPadConfigSet
+00000ba5   GPIOPinRead
+00000b79   GPIOPinTypeGPIOInput
+00000b33   GPIOPinTypeGPIOOutput
+00000bab   GPIOPinWrite
+00000b99   ResetISR
+UNDEFED    SHT$$INIT_ARRAY$$Base
+UNDEFED    SHT$$INIT_ARRAY$$Limit
+00000781   SysCtlClockSet
+00000bb1   SysCtlDelay
+00000ad5   SysCtlPeripheralEnable
+20000200   __STACK_END
+00000200   __STACK_SIZE
+20000200   __STACK_TOP
+00000bd8   __TI_CINIT_Base
+00000be0   __TI_CINIT_Limit
+00000bd0   __TI_Handler_Table_Base
+00000bd8   __TI_Handler_Table_Limit
+00000001   __TI_args_main
+00000911   __TI_auto_init
+20000208   __TI_cleanup_ptr
+00000b8b   __TI_decompress_none
+00000bb7   __TI_decompress_rle24
+2000020c   __TI_dtors_ptr
+00000000   __TI_static_base__
+00000875   __aeabi_memcpy
+00000875   __aeabi_memcpy4
+00000875   __aeabi_memcpy8
+ffffffff   __binit__
+ffffffff   __c_args__
+20000000   __stack
+00000b4d   _args_main
+00000a05   _c_int00
+20000200   _lock
+00000b73   _nop
+00000b6b   _register_lock
+00000b65   _register_unlock
+20000204   _unlock
+00000a95   abort
+ffffffff   binit
+00000a4d   copy_in
+00000a9d   exit
+00000000   g_pfnVectors
+00000549   has_lcd_4bitsetup
+00000383   has_lcd_erase
+000004db   has_lcd_position
+000003cf   has_lcd_sendchar
+00000455   has_lcd_sendcommand
+00000293   has_lcd_switchwrite
+00000395   has_lcd_write
+0000026d   main
+20000210   main_func_sp
+00000875   memcpy
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address    name
+--------   ----
+00000000   __TI_static_base__
+00000000   g_pfnVectors
+00000001   __TI_args_main
+00000200   __STACK_SIZE
+0000026d   main
+00000293   has_lcd_switchwrite
+00000383   has_lcd_erase
+00000395   has_lcd_write
+000003cf   has_lcd_sendchar
+00000455   has_lcd_sendcommand
+000004db   has_lcd_position
+00000549   has_lcd_4bitsetup
+0000064d   GPIOPadConfigSet
+00000781   SysCtlClockSet
+00000875   __aeabi_memcpy
+00000875   __aeabi_memcpy4
+00000875   __aeabi_memcpy8
+00000875   memcpy
+00000911   __TI_auto_init
+00000a05   _c_int00
+00000a4d   copy_in
+00000a91   C$$EXIT
+00000a95   abort
+00000a9d   exit
+00000ad5   SysCtlPeripheralEnable
+00000b09   GPIODirModeSet
+00000b33   GPIOPinTypeGPIOOutput
+00000b4d   _args_main
+00000b65   _register_unlock
+00000b6b   _register_lock
+00000b73   _nop
+00000b79   GPIOPinTypeGPIOInput
+00000b8b   __TI_decompress_none
+00000b99   ResetISR
+00000ba5   GPIOPinRead
+00000bab   GPIOPinWrite
+00000bb1   SysCtlDelay
+00000bb7   __TI_decompress_rle24
+00000bd0   __TI_Handler_Table_Base
+00000bd8   __TI_CINIT_Base
+00000bd8   __TI_Handler_Table_Limit
+00000be0   __TI_CINIT_Limit
+20000000   __stack
+20000200   __STACK_END
+20000200   __STACK_TOP
+20000200   _lock
+20000204   _unlock
+20000208   __TI_cleanup_ptr
+2000020c   __TI_dtors_ptr
+20000210   main_func_sp
+ffffffff   __binit__
+ffffffff   __c_args__
+ffffffff   binit
+UNDEFED    SHT$$INIT_ARRAY$$Base
+UNDEFED    SHT$$INIT_ARRAY$$Limit
+
+[55 symbols]
